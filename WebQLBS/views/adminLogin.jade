@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    title= AdminPage
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    #header
+      .section
+        span#ribbon
+        span#button
+        div
+          #logo
+            a(href='index.html')
+              img(src='images/logo.gif', alt='')
+          #navigation
+            ul.primary
+              li
+                a(href='index.html') Home
+              li.current
+                a(href='about.html') About us
+              li
+                a(href='blog.html') Blog
+              li
+                a(href='join-us.html') Join us
+              li
+                a(href='contact.html') Contact us
+            ul.secondary
+              li
+                a(href='themes.html') Themes
+              li
+                a(href='accessories.html') Accessories
+              li
+                a(href='tips.html') Tips & Guides
+              li
+                a(href='gallery.html') Gallery
+    #content
+      div
+        span.background
+        #about
+          h3
+            span Admin Login Page
+    .wrapper
+      .rec-prism
+        .face.face-front
+          .content
+            h2 Sign in
+            form(action="api/login", method="post")
+              .field-wrapper
+                input(type='text', name='username')
+              .field-wrapper
+                input(type='password', name='password', autocomplete='new-password')
+              .field-wrapper
+                input(type='submit')
+
+    #footer
+      p
+        | Copyright ©
+        a(href='#') Domain Name
+        |  - All Rights Reserved | Template By
+        a(target='_blank', href='http://www.freewebsitetemplates.com/') FreeWebsiteTemplates.com
+    div(align='center')
+      | Go to out website and get unlimited books &nbsp
+      a(href='/admin/login') Go now?
