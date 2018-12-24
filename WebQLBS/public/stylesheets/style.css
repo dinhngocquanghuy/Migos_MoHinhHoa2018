@@ -7,7 +7,7 @@ body{
 	min-width:960px;
 	padding:0;
 }
-a{
+a, button.rpl{
 	outline:none;
 }
 img{
@@ -415,7 +415,7 @@ h4 a{
 	padding:0;
 	width:auto;
 }
-#content div div.section div ul li div a{
+#content div div.section div ul li div a, button.rpl{
 	background:#a5967f;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -952,4 +952,39 @@ small {
   to {
     -webkit-transform: translate(-50%, -50%) rotate(-45deg) scale(1);
   }
+}
+
+img.APP {
+	width: 180px;
+	height: 200px;
+}
+
+ul.accessories{
+	width: 1000px;
+}
+
+.boxCtnt{
+	font-size: 20px;
+	text-align: left;
+	position: relative;
+  left: 300px;
+}
+
+img.AVP{
+	width: 400px;
+	height: 400px;
+}
+
+button.btn.btn-primary.btn-xs{
+	font-size: 20px;
+}
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }

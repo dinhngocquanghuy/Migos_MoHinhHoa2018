@@ -1,5 +1,34 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #header
+    span#tagline
+    #featured
+      ul
+        li.first
+          h2
+            a(href='#') 1. Select a Theme
+          div
+            span
+            a(href='#')
+              img(src='images/themes.jpg', alt='')
+          a.view(href='#')
+            span View Themes...
+        li
+          h2
+            a(href='#') 2. Accessorize
+          div
+            span
+            a(href='#')
+              img(src='images/accessories.jpg', alt='')
+          a.view(href='#')
+            span View Accessories...
+        li
+          h2
+            a(href='#') 3. Print & Share
+          div
+            span
+            a(href='#')
+              img(src='images/print.jpg', alt='')
+          a.view(href='#')
+            span How to Print...

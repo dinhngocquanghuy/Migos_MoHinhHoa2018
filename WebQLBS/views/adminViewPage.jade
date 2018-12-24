@@ -1,0 +1,72 @@
+doctype html
+html
+  head
+    title=adminProductPage
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css', rel='stylesheet')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
+    script(src='//code.jquery.com/jquery-1.11.1.min.js')
+    // ---- Include the above in your HEAD tag --------
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script(src='http://getbootstrap.com/dist/js/bootstrap.min.js')
+  body
+    #header
+      .section
+        span#ribbon
+        span#button
+        div
+          #logo
+            a(href='adminManagement/adminBuyerPage')
+              img(src='images/logo.gif', alt='')
+          #navigation
+            ul.primary
+            ul.secondary
+              li
+                a(href='/adminManagement/adminBuyerPage') User
+              li
+                a(href='/adminManagement/adminProductPage') Product
+              li
+                a(href='/admin/api/logout') Log out
+    #content
+      div
+        span.background
+        .section
+          h3
+            span Books
+          div
+            each b in book
+              img.AVP(src='#{b.image_url}', alt='')
+              .boxCtnt
+                a Book ID: #{b.id}
+                br
+                a Book Seller ID: #{b.seller_id}
+                br
+                a Book Name: #{b.name}
+                br
+                a Book Price: #{b.price}
+                br
+                a Book Description: #{b.description}
+                br
+                a Book Status (0: unblock, -1:block): #{b.status}
+                br
+                a Book Type: #{b.type}
+                br
+                a Book Amount: #{b.number}
+                br
+                a Book Author: #{b.author}
+                br
+                a Book Realease Date: #{b.release_date}
+                br
+                a Link Demo: #{b.linkdemo}
+              form(method="get", action="/adminManagement/adminProductPage")
+                button.btn.btn-primary.btn-xs(type = "submit")
+                  span.glyphicon.glyphicon-arrow-left &nbspBack
+    #footer
+      p
+        | Copyright ©
+        a(href='#') Domain Name
+        |  - All Rights Reserved | Template By
+        a(target='_blank', href='http://www.freewebsitetemplates.com/') FreeWebsiteTemplates.com
+    div(align='center')
+      | This template  downloaded form
+      a(href='http://all-free-download.com/free-website-templates/') free website templates

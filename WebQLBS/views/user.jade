@@ -1,0 +1,63 @@
+extends layout
+
+block content
+  script(src='/javascripts/user.js')
+  #content
+    div
+      span.background
+      .section
+        h3
+          span Edit
+        div
+          p Please edit your account.
+          form
+            table
+              tbody
+                tr
+                  td Username*
+                  td
+                    input#txtusername(type='text', required='')
+                tr
+                  td Full Name*
+                  td
+                    input#txtfullname(type='text', required='')
+                tr
+                  td Email
+                  td
+                    input#txtemail(type='text')
+                tr
+                  td Password*
+                  td
+                    input#txtpassword(type='password', required='')
+                tr
+                  td Confirm Password*
+                  td
+                    input#txtconfirmpassword(type='password', required='')
+                tr
+                  td Address
+                  td
+                    input#txtaddress(type='text')
+                tr
+                  td Phone
+                  td
+                    input#txtphone(type='text')
+                tr
+                  td  Role
+                  td
+                    select#role
+                      option(value='buyer') Buyer
+                      option(value='seller') Seller
+            input#policy(type='checkbox')
+            |             I agree to the Terms of Use and Privacy Policy
+            p
+          p#error(style='color:Red;')
+          p
+            button.submit(onclick='edit()') Submit
+          p * = Required Field
+  #footer
+    p
+        | Copyright © 
+        a(href='#') Domain Name
+        |  - All Rights Reserved | Template By 
+        a(target='_blank', href='http://www.freewebsitetemplates.com/') FreeWebsiteTemplates.com
+

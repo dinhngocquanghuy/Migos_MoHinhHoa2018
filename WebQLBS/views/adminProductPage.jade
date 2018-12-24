@@ -1,0 +1,74 @@
+doctype html
+html
+  head
+    title=adminProductPage
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.1.0/css/all.css', integrity='sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt', crossorigin='anonymous')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  body
+    #header
+      .section
+        span#ribbon
+        span#button
+        div
+          #logo
+            a(href='adminManagement/adminBuyerPage')
+              img(src='images/logo.gif', alt='')
+          #navigation
+            ul.primary
+            ul.secondary
+              li
+                a(href='/adminManagement/adminBuyerPage') User
+              li
+                a(href='/adminManagement/adminProductPage') Product
+              li
+                a(href='/admin/api/logout') Log out
+    .container
+      br
+      .row.justify-content-center
+        .col-12.col-md-10.col-lg-8
+          form.card.card-sm(method="post", action="/adminManagement/api/searchBook")
+            .card-body.row.no-gutters.align-items-center
+              .col-auto
+                i.fas.fa-search.h4.text-body
+              // end of col
+              .col
+                input.form-control.form-control-lg.form-control-borderless(type='search', placeholder='Search topics or keywords')
+              // end of col
+              .col-auto
+                button.btn.btn-lg.btn-success(type='submit') Search
+              // end of col
+              // end of col
+    #content
+      div
+        span.background
+        .section
+          h3
+            span Books
+          div
+            ul.accessories
+              each book in listbooks
+                  li
+                    a.thumbnail(href='#{book.image_url}')
+                      img.APP(src='#{book.image_url}', alt='')
+                    .dbtn
+                      form(method="post", action="api/viewBook/#{book.id}")
+                        button.rpl(type="submit") View
+                      form(method="post", action="api/blockBook/#{book.id}")
+                        button.rpl(type="submit") Block
+                      form(method="post", action="api/unblockBook/#{book.id}")
+                        button.rpl(type="submit") Unblock
+            #paging
+              a.prev(href='#') Prev
+              a.next.current(href='#') Next
+    #footer
+      p
+        | Copyright ©
+        a(href='#') Domain Name
+        |  - All Rights Reserved | Template By
+        a(target='_blank', href='http://www.freewebsitetemplates.com/') FreeWebsiteTemplates.com
+    div(align='center')
+      | This template  downloaded form
+      a(href='http://all-free-download.com/free-website-templates/') free website templates

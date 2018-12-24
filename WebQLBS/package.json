@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "alert-node": "^1.2.3",
     "cookie-parser": "~1.4.3",
     "crypto-js": "^3.1.9-1",
     "debug": "~2.6.9",
@@ -17,6 +18,7 @@
     "moment": "^2.23.0",
     "morgan": "~1.9.0",
     "mysql": "^2.16.0",
-    "rand-token": "^0.4.0"
+    "rand-token": "^0.4.0",
+    "store": "^2.0.12"
   }
 }

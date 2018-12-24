@@ -1,7 +1,78 @@
 doctype html
 html
   head
-    title= title
+    title Scrap Books
+    meta(charset='utf-8')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    //if IE 6
+    link(rel='stylesheet', type='text/css', href='/stylesheets/ie6.css')
   body
+    #header
+      .section
+        span#ribbon
+        span#button
+        div
+          #logo
+            a(href='/')
+              img(src='/images/logo.gif', alt='')
+          #navigation
+            ul.primary
+              li.current
+                a(href='/') Home
+              li
+                a(href='about.html') About us
+              li
+                a(href='join-us.html') Join us
+              li
+                a(href='contact.html') Contact us
+              li
+                a#register(href='/users/register') Register
+              li
+                a#login(href='/users/login') Login
+              li
+                a#username(href='/users/') username
+              li
+                a#logout(onclick='logout()') logout
+            ul.secondary
+              li
+                a(href='themes.html') Themes
+              li
+                a(href='accessories.html') Accessories
+              li
+                a(href='tips.html') Tips & Guides
+              li
+                a(href='gallery.html') Gallery
+      //span#tagline
+
     block content
+    script.
+      user = JSON.parse(localStorage.getItem("user"));
+      if(user && user.username != "")
+      {
+      document.getElementById("register").style.display = "none";
+      document.getElementById("register").style.visibility = "hidden";
+      document.getElementById("login").style.display = "none";
+      document.getElementById("login").style.visibility = "hidden";
+
+      document.getElementById("username").style.display = "block";
+      document.getElementById("username").style.visibility = "visible";
+      document.getElementById("logout").style.display = "block";
+      document.getElementById("logout").style.visibility = "visible";
+      document.getElementById("username").text = user.username;
+      }
+      else
+      {
+      document.getElementById("username").style.display = "none";
+      document.getElementById("username").style.visibility = "hidden";
+      document.getElementById("logout").style.display = "none";
+      document.getElementById("logout").style.visibility = "hidden";
+
+      document.getElementById("register").style.display = "block";
+      document.getElementById("register").style.visibility = "visible";
+      document.getElementById("login").style.display = "block";
+      document.getElementById("login").style.visibility = "visible";
+      }
+      function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "/";
+      }
