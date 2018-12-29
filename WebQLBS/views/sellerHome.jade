@@ -20,27 +20,9 @@ html
             ul.primary
             ul.secondary
               li
-                a(href='/adminManagement/adminBuyerPage') User
-              li
-                a(href='/adminManagement/adminProductPage') Product
+                a(href='/seller/postProducts') Thêm Sách
               li
                 a(href='/admin/api/logout') Log out
-    .container
-      br
-      .row.justify-content-center
-        .col-12.col-md-10.col-lg-8
-          form.card.card-sm(method="post", action="/adminManagement/api/searchBook")
-            .card-body.row.no-gutters.align-items-center
-              .col-auto
-                i.fas.fa-search.h4.text-body
-              // end of col
-              .col
-                input.form-control.form-control-lg.form-control-borderless(type='search', placeholder='Search topics or keywords', name='txtField')
-              // end of col
-              .col-auto
-                button.btn.btn-lg.btn-success(type='submit') Search
-              // end of col
-              // end of col
     #content
       div
         span.background
@@ -49,17 +31,13 @@ html
             span Books
           div
             ul.accessories
-              each book in listbooks
-                  li
-                    a.thumbnail(href='#{book.image_url}')
-                      img.APP(src='#{book.image_url}', alt='')
-                    .dbtn
-                      form(method="post", action="api/viewBook/#{book.id}")
-                        button.rpl(type="submit") View
-                      form(method="post", action="api/blockBook/#{book.id}")
-                        button.rpl(type="submit") Block
-                      form(method="post", action="api/unblockBook/#{book.id}")
-                        button.rpl(type="submit") Unblock
+              each book in books
+                li
+                  a.thumbnail(href='#{book.image_url}')
+                    img.APP(src='#{book.image_url}', alt='')
+                  .dbtn
+                    form(method="get", action="/seller/editProducts/#{book.id}")
+                      button.rpl(type="submit") Edit
             #paging
               a.prev(href='#') Prev
               a.next.current(href='#') Next

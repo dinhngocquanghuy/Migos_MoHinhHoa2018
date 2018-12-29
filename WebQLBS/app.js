@@ -10,10 +10,12 @@ var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var adminManagementRouter = require('./routes/adminManagement');
 var productsRouter = require ('./routes/products');
+var sellerRouter = require('./routes/seller');
 
 var app = express();
 
 var verifyAccessToken = require('./repos/adminRepos').verifyAccessToken;
+var verifyAccessToken1 = require('./services/ticket_services').verifyAccessToken;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +25,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -31,6 +34,8 @@ app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/adminManagement', verifyAccessToken, adminManagementRouter);
 app.use('/products', productsRouter);
+app.use('/seller', verifyAccessToken1, sellerRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -43,7 +43,12 @@ function login() {
       var json = JSON.parse(xhr.responseText);
       localStorage.setItem("user", JSON.stringify(json));
       console.log('Local Storage:', json);
-      window.location.href = "/";
+      if(json.role == 1){
+        window.location.href = "/";
+      }
+      else{
+        window.location.href = "/seller/sellerHome/" + json.id;
+      }
     } else {
       document.getElementById("error").innerHTML = "Invalid input";
     }

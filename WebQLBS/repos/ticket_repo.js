@@ -1,5 +1,6 @@
 const database = require("../database/mysql");
 var moment = require("moment");
+var store = require('store');
 
 var role = "ticket_buyer";
 var id = "buyer_id"
@@ -18,7 +19,6 @@ exports.updateRefreshToken = (userId, rfToken, _role) => {
                 role = "ticket_seller";
                 id = "seller_id";
             }
-
         var sql = `DELETE FROM ${role} WHERE ${id} = '${userId}'`;
         database.query_db(sql) // delete
             .then(value => {

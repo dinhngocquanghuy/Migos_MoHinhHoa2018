@@ -130,3 +130,8 @@ exports.viewBook = (id) => {
   const query = `select * from \`products\` where id = ${id}`;
   return database.query_db(query);
 }
+
+exports.searchBook = (string) => {
+  const query = `select * from \`products\` where name like '%${string}%' || '${string}%' || '%${string}'`;
+  return database.query_db(query);
+}

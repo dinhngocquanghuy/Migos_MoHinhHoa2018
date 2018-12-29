@@ -20,27 +20,9 @@ html
             ul.primary
             ul.secondary
               li
-                a(href='/adminManagement/adminBuyerPage') User
+                a(href='/seller/postProducts') Thêm Sách
               li
-                a(href='/adminManagement/adminProductPage') Product
-              li
-                a(href='/admin/api/logout') Log out
-    .container
-      br
-      .row.justify-content-center
-        .col-12.col-md-10.col-lg-8
-          form.card.card-sm(method="post", action="/adminManagement/api/searchBook")
-            .card-body.row.no-gutters.align-items-center
-              .col-auto
-                i.fas.fa-search.h4.text-body
-              // end of col
-              .col
-                input.form-control.form-control-lg.form-control-borderless(type='search', placeholder='Search topics or keywords', name='txtField')
-              // end of col
-              .col-auto
-                button.btn.btn-lg.btn-success(type='submit') Search
-              // end of col
-              // end of col
+                a(href='/users/login') Log out
     #content
       div
         span.background
@@ -49,17 +31,28 @@ html
             span Books
           div
             ul.accessories
-              each book in listbooks
-                  li
-                    a.thumbnail(href='#{book.image_url}')
-                      img.APP(src='#{book.image_url}', alt='')
-                    .dbtn
-                      form(method="post", action="api/viewBook/#{book.id}")
-                        button.rpl(type="submit") View
-                      form(method="post", action="api/blockBook/#{book.id}")
-                        button.rpl(type="submit") Block
-                      form(method="post", action="api/unblockBook/#{book.id}")
-                        button.rpl(type="submit") Unblock
+                li
+                  a.thumbnail(href='#{book.image_url}')
+                    img.APP(src='#{book.image_url}', alt='')
+                  .dbtn
+                    form(method="post", action="/seller/api/editProducts/#{book.id}")
+                      Book Name:
+                        input(style="text", name = "name", value="#{book.name}")
+                      Book Price:
+                        input(style="text", name = "price", value="#{book.price}")
+                      Book Description:
+                        input(style="text", name = "description", value="#{book.description}")
+                      Book Type:
+                        input(style="text", name = "type", value="#{book.type}")
+                      Book Quantiy:
+                        input(style="text", name = "number", value="#{book.number}")
+                      Book Author:
+                        input(style="text", name = "author", value="#{book.author}")
+                      Book Release Day:
+                        input(style="text", name = "release_date", value="#{book.release_date}")
+                      Link Demo:
+                        input(style="text", name = "linkdemo", value="#{book.linkdemo}")
+                      button(type="submit") update
             #paging
               a.prev(href='#') Prev
               a.next.current(href='#') Next

@@ -4,6 +4,9 @@ const ticket = require("./ticket_services");
 const express = require("express");
 const users = express.Router();
 const bodyParser = require("body-parser");
+var database = require("../database/mysql");
+
+var store = require('store');
 users.use(bodyParser.json());
 
 users.login = (req, res) => {
@@ -16,6 +19,8 @@ users.login = (req, res) => {
 
   const accessToken = ticket.generateAccessToken(users);
   const refreshToken = ticket.generateRefreshToken();
+  store.set("user_acToken",{value:accessToken});
+  console.log(refreshToken);
   user_db
     .authenticate(username, password, role)
     .then(user => {
@@ -116,4 +121,28 @@ users.edit = (req, res) => {
     });
 };
 
+users.logout = (acToken) => {
+  const query = `delete from ticket_seller where ticket = '${acToken}'`;
+  return database.query_db(query);
+}
+
+users.postBook = (id_seller,name, price, des, iu, type, num, author, rd, linkd) => {
+  const query = `insert into products(seller_id,name,price,description,image_url,status,type,number,author,linkdemo) values(${id_seller}, '${name}', ${price}, '${des}', '${iu}', 0, '${type}', ${num}, '${author}', '${linkd}')`;
+  return database.query_db(query);
+}
+
+users.getBooksOfSeller = (id) => {
+  const query = `select * from products where seller_id = ${id}`;
+  return database.query_db(query);
+}
+
+users.getBook = (id) => {
+  const query = `select * from products where id = ${id}`;
+  return database.query_db(query);
+}
+
+users.updateBook = (id,name,price,description,type,number,author,release_date,linkdemo) => {
+  const query = `update products set name = '${name}', price = ${price}, description = '${description}', type = '${type}', number = ${number}, author = '${author}', release_date = '${release_date}', linkdemo = '${linkdemo}' where id = ${id}`;
+  return database.query_db(query);
+}
 module.exports = users;

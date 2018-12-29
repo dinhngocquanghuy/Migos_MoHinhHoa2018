@@ -1,0 +1,90 @@
+doctype html
+html
+  head
+    title= AdminPage
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='//code.jquery.com/jquery-1.11.1.min.js')
+  body
+    #header
+      .section
+        span#ribbon
+        span#button
+        div
+          #logo
+            a(href='index.html')
+              img(src='images/logo.gif', alt='')
+          #navigation
+            ul.primary
+            ul.secondary
+              li
+                a(onclick='logout()') Log out
+    #content
+      div
+        span.background
+        .section
+          h3
+            span Đăng Sách
+          div
+            form#postBook(method="post")
+              table
+                tbody
+                  tr
+                    td Tên Sách*
+                    td
+                      input(type='text', name="BookName")
+                  tr
+                    td Giá Sách*
+                    td
+                      input(type='text', name="BookPrice")
+                  tr
+                    td Giới Thiệu Sách
+                    td
+                      input(type='text', name="BookDes")
+                  tr
+                    td Image URL
+                    td
+                      input(type='text', name="BookIU")
+                  tr
+                    td Thể Loại
+                    td
+                      input(type='text', name="BookType")
+                  tr
+                    td Số Lượng*
+                    td
+                      input(type='text', name="BookNum")
+                  tr
+                    td Tác Giả
+                    td
+                      input(type='text', name="BookAuthor")
+                  tr
+                    td Ngày Xuất Bản
+                    td
+                      input(type='text', name="BookRD")
+                  tr
+                    td Link Demo (Ebook)
+                    td
+                      input(type='text', name="BookLinkD")
+              p
+                input(type='checkbox')
+                |             I agree to the Terms of Use and Privacy Policy
+              p
+                input.submit(type='submit')
+              p * = Required Field
+    #footer
+      p
+        | Copyright ©
+        a(href='#') Domain Name
+        |  - All Rights Reserved | Template By
+        a(target='_blank', href='http://www.freewebsitetemplates.com/') FreeWebsiteTemplates.com
+    div(align='center')
+      | This template  downloaded form
+      a(href='http://all-free-download.com/free-website-templates/') free website templates
+    script.
+      var user = JSON.parse(localStorage.getItem("user"));
+      window.onload = function(e){
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user);
+        var id = user.id;
+        console.log(id);
+        $('#postBook').attr('action','/seller/api/postProducts/' + id);
+      }

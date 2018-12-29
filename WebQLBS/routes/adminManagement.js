@@ -108,4 +108,20 @@ router.post('/api/viewBook/:id', function(req,res,next){
   store.set("bookid", {value:id});
   res.redirect('/adminManagement/adminViewPage');
 });
+
+router.get('/searchBook', function(req,res,next){
+  res.render('adminProductPage', {
+    "listbooks": store.get("listbooks").value
+  });
+});
+
+router.post('/api/searchBook', function(req,res,next){
+  console.log("req.body.txtField: " + req.body.txtField);
+  adminRepos.searchBook(req.body.txtField).then(
+    (rows) => {
+      store.set("listbooks", {value:rows});
+      res.redirect('/adminManagement/searchBook');
+    }
+  );
+});
 module.exports = router;

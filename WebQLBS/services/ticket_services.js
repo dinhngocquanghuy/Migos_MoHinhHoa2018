@@ -2,9 +2,10 @@ var jwt = require('jsonwebtoken');
 var rndToken = require('rand-token');
 
 var ticket_db = require("../repos/ticket_repo");
+var store = require('store');
 
 const SECRET = 'ABCDEF';
-const AC_LIFETIME = 600; // seconds
+const AC_LIFETIME = 6000; // seconds
 
 exports.generateAccessToken = userEntity => {
     var payload = {
@@ -20,7 +21,7 @@ exports.generateAccessToken = userEntity => {
 }
 
 exports.verifyAccessToken = (req, res, next) => {
-    var token = req.headers['x-access-token'];
+    var token = store.get("user_acToken").value;
     console.log(token);
 
     if (token) {
