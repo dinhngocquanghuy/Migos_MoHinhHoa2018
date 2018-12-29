@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var product_services = require("../services/products_services");
 
+
 router.get('/', function(req, res, next) {
 	res.render('products', { title: 'Express' });
 });

@@ -44,7 +44,7 @@ function login() {
       localStorage.setItem("user", JSON.stringify(json));
       console.log('Local Storage:', json);
       if(json.role == 1){
-        window.location.href = "/";
+        window.location.href = "/products/show";
       }
       else{
         window.location.href = "/seller/sellerHome/" + json.id;

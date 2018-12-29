@@ -1,0 +1,43 @@
+doctype html
+html
+	head
+		title GIỎ HÀNG
+		meta(name='viewport', content='width=device-width, initial-scale=1', charset='utf-8')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(rel='stylesheet', href='/stylesheets/cart.css')
+		script(src='/javascripts/cart.js')
+	body
+		.container
+			.panel.panel-primary
+				.panel-heading
+					h1 GIỎ HÀNG
+			table#tableCart.table.table-info.table-bordered
+				tr.info
+					th 
+					th.text-center Tên sách
+					th.text-center Giá
+					th.text-center
+			.row
+				.col-md-4
+				.col-md-4
+				.col-md-4
+					.panel.panel-primary
+						.panel-heading Tổng cộng
+						.panel-body
+							p#sum
+					.text-right
+						.btn-group
+							a.btn.btn-primary(href='/products/show')
+								span.glyphicon.glyphicon-menu-left
+								span &nbsp Quay lại
+							btn.btn.btn-success(type='submit' onClick='purchase()')
+								span.glyphicon.glyphicon-ok
+								span &nbsp Thanh toán
+			
+	script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+	script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js')
+	script(src='https://unpkg.com/axios/dist/axios.min.js')
+	script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+	
+	
